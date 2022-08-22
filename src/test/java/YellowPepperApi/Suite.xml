@@ -4,7 +4,7 @@
 <suite name="Test API Suite" verbose="1">
     <test name="Api Testing"   >
         <classes>
-            <class name="academyapi.TestApi"></class>
+            <class name="YellowPepperApi.testcases.TestPet"></class>
         </classes>
     </test>
 </suite>

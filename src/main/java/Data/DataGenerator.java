@@ -1,37 +1,73 @@
 package Data;
 
-import academyapi.Users;
+
+import YellowPepperApi.model.Category;
+import YellowPepperApi.model.Pet;
+import YellowPepperApi.model.Tags;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+import static org.testng.AssertJUnit.assertEquals;
+
+/**
+ * Base Project TestNG + Rest Assured
+ * Core API Methods
+ *
+ * @author Brayhan.Criollo
+ */
 public class DataGenerator {
-    private String[] id;
-    private String[] firstName={"FrenchVirus","RiderDr","BronzeSunrise","DearAim","ShootNeer","MajStrong","SolSword","CovidJackpot","HealMorphine","FreedomSynn","WaitFire","PokeZero","BlackCovid","AlphaSnipe","PrincessSmall","SushiOnix","DiabèteNever","UraniumHack","SniperSniper","RiverRiku"};
-    private String[] lastName={"FrenchVirus","RiderDr","BronzeSunrise","DearAim","ShootNeer","MajStrong","SolSword","CovidJackpot","HealMorphine","FreedomSynn","WaitFire","PokeZero","BlackCovid","AlphaSnipe","PrincessSmall","SushiOnix","DiabèteNever","UraniumHack","SniperSniper","RiverRiku"};
-    private String[] email;
-    private String[] country={"Albania","Alemania","Andorra","Angola","Antigua","ArabiaSaudita","Argelia","Argentina","Armenia","Australia","Austria","Azerbaiyán","Bahamas","Bahrein","Bangladesh","Barbados","Belarús","Belice","Benin","Bhután"};
-    private String[] telephone={"61(344)921-85-70891","4(8994)827-25-18762","1(1490)618-63-00190","3(950)120-99-22113","04(753)845-94-50789","91(224)562-60-77525","6(8158)082-98-68010","62(3454)395-90-19834","846(34)259-39-66800","43(4864)533-00-24638","1(61)581-38-27255","421(849)413-15-12739","857(9527)725-24-77216","6(4736)199-07-47733","017(79)460-53-12160","20(106)446-87-69932","20(91)339-49-99106","0(257)455-44-87118","1(8427)278-37-56889","68(1326)073-89-47880"};
-    private Boolean[] active={true,false};
-    private String[] jobTitle={"Aerospace Engineering and Operations Technicians","Aerospace Engineers","Agricultural Engineers","Architects, Except Landscape and Naval","Architectural and Civil Drafters","Architectural Drafters","Automotive Engineering Technicians","Automotive Engineers","Biochemical Engineers","Biomedical Engineers","Cartographers and Photogrammetrists","Chemical Engineers","Civil Drafters","Civil Engineering Technicians","Civil Engineers","Computer Hardware Engineers","Drafters, All Other","Electrical and Electronic Engineering Technicians","Electrical and Electronics Drafters","Electrical Drafters"};
 
+    private static Map<String, String> userMap;
+    private Logger log = LogManager.getLogger(DataGenerator.class);
+    ;
 
+    public Pet createPet() {
+        List<String> photos = new ArrayList<>();
+        Category category = new Category(1, "Dogs");
+        Tags tag =new Tags();
+        tag.setId(1);
+        tag.setName("Dogs");
+        List<Tags> tags = new ArrayList<>();
+        tags.add(tag);
+        photos.add("Path/Path/path");
+        DataGenerator core = new DataGenerator();
+        Pet pet = new Pet();
+        pet.setId(1);
+        pet.setCategory(category);
+        pet.setName("Firulais");
+        pet.setPhotoUrls(photos);
+        pet.setTags(tags);
+        pet.setStatus("available");
 
-    public int randomGenerator(){
-        return  (int)(Math.random()*20);
+        return pet;
     }
 
-    public ArrayList<Users> usersGenerator (int dataAmount){
-        ArrayList<Users> data = new ArrayList<>();
-        for (int i = 0; i < dataAmount ; i++) {
-            String firstName=this.firstName[randomGenerator()];
-            String lastName=this.lastName[randomGenerator()];
-            String email=firstName+"."+lastName+"@gmail.com";
-            String country=this.country[randomGenerator()];
-            String telephone=this.telephone[randomGenerator()];
-            Boolean active=this.active[randomGenerator()%2];
-            String jobTitle=this.jobTitle[randomGenerator()];
-            data.add(new Users(firstName,lastName,email,country,telephone,active,jobTitle));
-        }
-      return data;
+    public Pet modifiedPet() {
+        List<String> photos = new ArrayList<>();
+        Category category = new Category(1, "Dogsmodified");
+        Tags tag =new Tags();
+        tag.setId(1);
+        tag.setName("Dogsmodified");
+        List<Tags> tags = new ArrayList<>();
+        tags.add(tag);
+        photos.add("Path/Path/pathmodified");
+        DataGenerator core = new DataGenerator();
+        Pet pet = new Pet();
+        pet.setId(1);
+        pet.setCategory(category);
+        pet.setName("Firulaismodified");
+        pet.setPhotoUrls(photos);
+        pet.setTags(tags);
+        pet.setStatus("availablemodified");
+
+        return pet;
     }
+
+
+
+
 }
