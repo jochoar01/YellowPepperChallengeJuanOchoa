@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="FinalExamAPI" />
         <module name="YellowPepperChallengeJuanOchoa" />
+        <module name="automation implementation" />
       </profile>
     </annotationProcessing>
   </component>
